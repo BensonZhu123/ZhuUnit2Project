@@ -24,7 +24,26 @@ public class LinearEquation {
     }
 
     public String equation() {
-
+        double numerator = x2-x1;
+        double denominator = y2-y1;
+        double yInt = yIntercept();
+        String slope;
+        if (denominator < 0){
+            denominator = (int)Math.abs(denominator);
+            numerator = numerator*(-1);
+            slope = numerator + "/" + denominator;
+        }
+        if (denominator == -1){
+            slope = "-";
+        }
+        if ((((numerator % denominator) == 0) || ((int)(numerator / denominator)) == 1)){
+            numerator = (int)(numerator/denominator);
+            slope = "" + numerator;
+        }
+        if (numerator)
+        if (yInt < 0){
+            return "y = "
+        }
 
 
         }
