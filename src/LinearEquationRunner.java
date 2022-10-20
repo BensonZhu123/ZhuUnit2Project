@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class LinearEquationRunner {
     public static void main(String[] args){
+        System.out.println("Welcome to the Linear Equation Runner");
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter coordinate 1: ");
         String coor1 = scan.nextLine();
@@ -13,7 +14,7 @@ public class LinearEquationRunner {
         int x2 = Integer.parseInt(coor2.substring(1, coor2.indexOf(",")));
         int y2 = Integer.parseInt(coor2.substring(coor2.indexOf(",")+2, len2-1));
         LinearEquation eq1 = new LinearEquation(x1,y1,x2,y2);
-
+        System.out.println(eq1.coordinateForX(4.0));
 
     }
 }
