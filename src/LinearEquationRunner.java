@@ -14,7 +14,13 @@ public class LinearEquationRunner {
         int x2 = Integer.parseInt(coor2.substring(1, coor2.indexOf(",")));
         int y2 = Integer.parseInt(coor2.substring(coor2.indexOf(",")+2, len2-1));
         LinearEquation eq1 = new LinearEquation(x1,y1,x2,y2);
-        System.out.println(eq1.coordinateForX(4.0));
-
+        System.out.println(eq1.lineInfo());
+        if (x1 == x2){
+            System.exit(0);
+        }
+        System.out.println("");
+        System.out.print("Enter a value for x: ");
+        double xVal = scan.nextDouble();
+        System.out.println("The point on the line is: " + eq1.coordinateForX(xVal));
     }
 }

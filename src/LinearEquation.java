@@ -28,30 +28,61 @@ public class LinearEquation {
     }
 
     public String equation() {
-        double numerator = x2 - x1;
-        double denominator = y2 - y1;
-        double yInt = yIntercept();
-        String slope;
-        String yIntOperation;
-        if (denominator < 0) {
-            denominator = (int) Math.abs(denominator);
-            numerator = numerator * (-1);
-            slope = numerator + "/" + denominator;
+        String numerator;
+        String denominator;
+        double numInt = yIntercept();
+        int num = y2 - y1;
+        int den = x2 - x1;
+        String yInt;
+        if (Math.abs(num) == Math.abs(den)){
+            num = num / (Math.abs(num));
+            den = den / (Math.abs(den));
         }
-        if ((((numerator % denominator) == 0) || ((int) (numerator / denominator)) == 1)) {
-            numerator = (int) (numerator / denominator);
-            slope = "" + numerator;
+        if (numInt == 0){
+            yInt = "";
         }
-        if (yInt < 0) {
-            yIntOperation = "-";
-        } else if (yInt > 0) {
-            yIntOperation = "+";
-        } else {
-            yIntOperation = "";
-            String zeroInt = "";
+        else if (numInt < 0){
+            yInt = " - " + Math.abs(yIntercept());
         }
-        return "";
+        else{
+            yInt = " + " + Math.abs(yIntercept());
         }
+        if(den < 0) {
+            num *= -1;
+            den = Math.abs(den);
+        }
+        if (den == 0 || den == 1){
+            denominator = "";
+        }
+
+        else {
+            denominator = "/" + den;
+        }
+
+        if (num == 0){
+            numerator = "";
+            denominator = "";
+        }
+        else if ((num == -1)&&(den == 0) || (den == 1)){
+            numerator = "-";
+        }
+        else if ((num == 1)&&((den == 0))){
+            numerator = "";
+        }
+        else{
+            numerator = "" + num;
+        }
+        if (Math.abs(num) == 1 && Math.abs(den) == 1){
+            numerator = "";
+            denominator = "";
+        }
+        if (y1 == y2){
+            return "y = " +yIntercept();
+        }
+        else {
+            return "y = " + numerator + denominator + "x" + yInt;
+        }
+    }
         public String coordinateForX ( double xValue){
             double yCoor = (slope()*xValue) + yIntercept();
             return "(" + xValue + ", " + yCoor + ")";
@@ -59,7 +90,19 @@ public class LinearEquation {
 
 
         public String lineInfo () {
-            return "";
+            if (x1 == x2){
+
+                return "These points are on a vertical line: x = " + x1;
+
+            }
+            else {
+                String line1 = "The two points are: (" + x1 + ", " + y1 + ") and " + "(" + x2 + ", " + y2 + ")";
+                String line2 = "The equation of the line between these two points is: " + equation();
+                String line3 = "The slope of this line is: " + slope();
+                String line4 = "The y-intercept of the line is: " + yIntercept();
+                String line5 = "The distance between the two points is: " + distance();
+                return line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5;
+            }
         }
 
 }
